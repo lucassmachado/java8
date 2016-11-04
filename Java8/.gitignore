@@ -1,6 +1,5 @@
-.classpath
-.project
-.settings/
+/target/
+
 *.class
 
 # Mobile Tools for Java (J2ME)
