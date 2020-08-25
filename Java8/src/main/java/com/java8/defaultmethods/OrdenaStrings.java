@@ -15,13 +15,13 @@ public class OrdenaStrings {
 		Collections.sort(palavras, comparador);
 		System.out.println(palavras);
 
-		palavras.sort((s1, s2) -> Integer.compare(s1.length(), s2.length()));
+		palavras.sort(Comparator.comparing(String::isEmpty));
 
 		for (String p : palavras) {
 			System.out.println(p);
 		}
 
-		palavras.forEach(s -> System.out.println(s));
+		palavras.forEach(System.out::println);
 		
 		new Thread(() -> System.out.println("Executando")).start();
 	}
