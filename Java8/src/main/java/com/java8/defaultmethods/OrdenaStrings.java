@@ -1,6 +1,5 @@
 package com.java8.defaultmethods;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -11,20 +10,22 @@ public class OrdenaStrings {
 
 	public static void main(String[] args) {
 		List<String> palavras = Arrays.asList("alura online", "editora casa do código", "caelum");
-		
+
 		Comparator<String> comparador = new ComparadorPorTamanho();
 		Collections.sort(palavras, comparador);
 		System.out.println(palavras);
-		
-		palavras.sort(comparador);
-		
+
+		palavras.sort((s1, s2) -> Integer.compare(s1.length(), s2.length()));
+
 		for (String p : palavras) {
 			System.out.println(p);
 		}
+
+		palavras.forEach(s -> System.out.println(s));
 		
-		palavras.forEach(new ImprimeNaLinha());
+		new Thread(() -> System.out.println("Executando")).start();
 	}
-	
+
 }
 
 class ImprimeNaLinha implements Consumer<String> {
@@ -33,7 +34,7 @@ class ImprimeNaLinha implements Consumer<String> {
 	public void accept(String t) {
 		System.out.println(t);
 	}
-	
+
 }
 
 class ComparadorPorTamanho implements Comparator<String> {
@@ -48,5 +49,5 @@ class ComparadorPorTamanho implements Comparator<String> {
 		}
 		return 0;
 	}
-	
+
 }
